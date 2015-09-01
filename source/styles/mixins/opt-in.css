@@ -1,0 +1,13 @@
+@define-mixin opt-in {
+  margin-left: -3vw;
+  margin-right: -3vw;
+  padding: 30px 3vw 20px;
+  background: color( $body-bg whiteness(+ 10%) );
+  border-top: 1px solid $gray-light;
+  border-bottom: 1px solid $gray-light;
+
+  @media (min-width: $screen-md-max) {
+    margin-left: $image-outer-edge-margin;
+    margin-right: $image-outer-edge-margin;
+  }
+}

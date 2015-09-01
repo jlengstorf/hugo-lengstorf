@@ -1,0 +1,74 @@
+@define-mixin input {
+  position: relative;
+  width: 100%;
+  padding: 3vw 3.5vw;
+  padding-left: 8vw;
+  background: color($body-bg blackness(+ 5%) );
+  border: 1px solid $gray;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 22px;
+  transition: .2s all ease-in-out;
+  z-index: 1;
+
+  &:hover,&:focus,&:active {
+    background: $body-bg;
+    border-color: $brand-primary;
+    outline: none;
+  }
+
+  @media (min-width: 420px) {
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+  }
+
+  @media (min-width: 650px) {
+    /*width: 55%;*/
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    padding-left: 5vw;
+  }
+
+  @media (min-width: 768px) {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+  }
+}
+
+@define-mixin submit {
+  width: 39vw;
+  padding: 3vw;
+  border: 2px solid color( $brand-primary whiteness(+ 5%) );
+  border-radius: 4px;
+  background: $brand-primary;
+  color: $gray-lighter;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: $font-weight-heading;
+  line-height: 20px;
+  text-transform: uppercase;
+  transition: .2s all ease-in-out;
+
+  &:hover,&:focus,&:active {
+    background: color( $brand-primary whiteness(+ 10%) );
+    border-color: $brand-primary;
+    color: white;
+    outline: none;
+    text-shadow: 1px 1px 1px color( $gray-darker alpha(15%) );
+  }
+
+  @media (min-width: 420px) {
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+  }
+
+  @media (min-width: 650px) {
+    width: 41%;
+    padding: 1vw;
+  }
+
+  @media (min-width: 768px) {
+    padding: 9px 10px;
+  }
+}

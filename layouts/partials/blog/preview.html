@@ -1,0 +1,20 @@
+        {{ $mainImage := index .Params.images 0 }}
+        <article class="blog-preview">
+            <h2 class="main-content__headline"
+                data-image="{{ with $mainImage }}{{.}}{{ end }}">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </h2>
+            <div class="main-content__meta">
+                <a href="{{ .Permalink }}">
+                    <img src="{{ with $mainImage }}{{.}}{{ end }}"
+                         alt="{{ .Title }}"
+                         class="alignleft featured-image">
+                </a>
+                <div class="main-content__excerpt">
+                  <p>{{ .Description }}</p>
+                </div>
+                {{ partial "blog/categories.html" . }}
+                {{ partial "blog/tags.html" . }}
+                <a href="{{ .Permalink }}" class="blog-preview__read-more">Read this post</a>
+            </div>
+        </article>

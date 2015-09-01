@@ -1,0 +1,8 @@
+    <!-- Schema.org markup -->
+    <meta itemprop="name" content="{{ if .Params.seo_title }}{{ .Params.seo_title }}{{ else }}{{ .Title }}{{ end }}">
+    <meta itemprop="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}">
+{{ with .Params.images }}{{ range first 6 . }}
+    {{ if in . "-600x300" }}{{ else }}<meta itemprop="image" content="{{ . }}">{{ end }}{{ end }}
+{{ end }}
+    <meta itemprop="keywords" content="{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s," $term }}{{ end }}{{ end }}">
+    {{if .IsPage}}<meta itemprop="wordCount" content="{{ .WordCount }}">{{ end }}

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    {{ partial "header.html" . }}
+
+    <article class="main-content">
+      <h1 class="main-content__headline--single"
+          data-image="{{ with .Params.images }}{{ index . 0 | absURL }}{{ end }}">
+        {{ .Title }}
+      </h1>
+      {{ .Content }}
+    </article>
+    {{ partial "footer.html" . }}
+    {{ partial "scripts.html" . }}
+  </body>
+
+</html>

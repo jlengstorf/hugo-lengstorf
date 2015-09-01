@@ -1,0 +1,30 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{{ if .Params.seo_title }}{{ .Params.seo_title }}{{ else }}{{ .Title }} &mdash; {{ .Site.Title }}{{ end }}</title>
+
+    {{ "<!--[if !IE]> -->" | safeHTML }}
+    <link rel="stylesheet"
+          href="//cloud.typography.com/6102252/617726/css/fonts.css">
+    <link rel="stylesheet"
+          href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/main-2da7d11e6a.min.css">
+    <!-- endinject -->{{ "<!-- <![endif]-->" | safeHTML }}
+
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="publisher" href="https://plus.google.com/+Lengstorf">
+    <meta property="fb:admins" content="1468448880" />
+
+    <script type='application/ld+json'>{"@context":"http://schema.org","@type":"Person","url":"http://lengstorf.com/","sameAs":["https://www.facebook.com/jlengstorf","https://instagram.com/jlengstorf","https://plus.google.com/+Lengstorf","https://www.youtube.com/lengstorf","https://twitter.com/jlengstorf"],"name":"Jason Lengstorf"}</script>
+
+    {{ partial "head/seo/schema.html" . }}
+    {{ partial "head/seo/open-graph.html" . }}
+    {{ partial "head/seo/twitter-cards.html" . }}
+    {{ partial "head/favicon.html" . }}
+    {{ partial "head/rss.html" . }}
+    {{ partial "head/google-analytics.html" . }}
+  </head>

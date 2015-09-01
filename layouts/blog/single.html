@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    {{ partial "header.html" . }}
+    {{ $mainImage := index .Params.images 0 }}
+    <article class="main-content">
+      <h1 class="main-content__headline--single"
+              data-image="{{ $mainImage | absURL }}">
+        {{ .Title }}
+      </h1>
+      <div class="main-content__meta">
+        <img src="{{ $mainImage | absURL }}"
+             alt="{{ .Title }}"
+             class="alignleft featured-image">
+        <div class="main-content__excerpt">
+          <p>{{ .Description | markdownify }}</p>
+        </div>
+        {{ partial "blog/categories.html" . }}
+        {{ partial "blog/tags.html" . }}
+        <!-- {{ partial "single/sharing.html" . }} -->
+      </div>
+      <div class="main-content__content">
+        {{ .Content }}
+      </div>
+      <div class="main-content__meta--bottom">
+        <!-- {{ partial "single/sharing.html" . }} -->
+        {{ partial "single/discussion.html" . }}
+      </div>
+      {{ partial "blog/related.html" . }}
+    </article>
+    {{ partial "footer.html" . }}
+    {{ partial "scripts.html" . }}
+  </body>
+
+</html>

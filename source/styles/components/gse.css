@@ -1,0 +1,107 @@
+.main-content {
+
+  /* This appears to be the only option for targeting GSE's main container. */
+  [id*=gcse] {
+    margin-top: 0;
+
+    /* When search is present, removes the top margin off the first preview */
+    + .blog-preview {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    @media (min-width: 768px) {
+      position: absolute;
+      top: 110px;
+      right: 30px;
+      width: 300px;
+      z-index: 100;
+
+      + .blog-preview {
+        margin-top: 20px;
+        padding-top: 30px;
+        border-top: 1px solid $gray-lighter;
+      }
+
+      .gsc-control-cse {
+        padding-top: 0;
+      }
+    }
+  }
+
+  .gsc-control-cse {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .gsc-input {
+    padding-top: 0;
+    vertical-align: bottom;
+  }
+
+  .gsc-input-box {
+      border-radius: $border-radius-base;
+      height: 27px;
+
+      .gsib_a,.gsst_a {
+        padding-top: 0;
+      }
+
+      .gscb_a {
+        margin-top: 4px;
+      }
+  }
+
+  .gsc-input {
+    height: 1.65em !important;
+    background-color: transparent !important;
+    line-height: 1.5;
+    vertical-align: middle;
+
+    @media (min-width: $screen-md-min) {
+      vertical-align: top;
+    }
+  }
+
+  .gsc-search-button {
+    margin-top: 0;
+    box-sizing: content-box;
+    vertical-align: bottom;
+
+    input.gsc-search-button {
+      background-color: $brand-primary;
+      vertical-align: top;
+
+      &:active,&:hover,&:focus {
+        background-color: color( $brand-primary blackness(+ 10%) );
+      }
+    }
+  }
+
+  .gsc-results-wrapper-overlay {
+    box-sizing: content-box;
+
+    * {
+      box-sizing: content-box;
+      margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+      left: 2%;
+      width: 90%;
+      padding-left: 3%;
+      padding-right: 3%;
+    }
+  }
+
+  .gsc-wrapper {
+    line-height: normal;
+  }
+
+  .gsc-modal-background-image {
+    margin-top: 0;
+    background-color: $gray-darker;
+  }
+
+}

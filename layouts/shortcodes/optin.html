@@ -1,0 +1,32 @@
+
+    <div class="opt-in">
+      {{ with .Get "headline" }}{{.}}{{ end }}
+      <form action="//lengstorf.us9.list-manage.com/subscribe/post?u=f25c45f78f64cfd807b86df9c&amp;id=33a31102ba"
+            method="post" id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            novalidate class="opt-in__form validate" role="form">
+        <div class="opt-in__input-group">
+          <label for="fname"
+                 class="opt-in__label name">First Name</label>
+          <input type="text" class="opt-in__input" id="fname" name="FNAME">
+        </div>
+        <div class="opt-in__input-group">
+          <label for="email"
+                 class="opt-in__label email">Email Address</label>
+          <input type="email" class="opt-in__input" id="email" name="EMAIL">
+        </div>
+        <button class="opt-in__submit" type="submit" name="subscribe">
+          {{ .Get "button" }}
+        </button>
+        <div style="position: absolute; left: -5000px;">
+          <input type="text" name="b_f25c45f78f64cfd807b86df9c_33a31102ba"
+                 tabindex="-1" value="">
+        </div>
+
+        <input type="hidden" name="u" value="34042625c99172141e2b35836">
+        <input type="hidden" name="id" value="7e395d5c57">
+      </form>
+    </div>
+    <p class="opt-in__privacy-notice">
+      <small>{{ if isset .Params "privacy" }}{{ .Get "privacy" | safeHTML }}{{ else }}I will never share your personal information.{{ end }}</small>
+    </p>

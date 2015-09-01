@@ -1,0 +1,43 @@
+@define-mixin set-screen-size-rules $font-size {
+    .main-content {
+        *+*,p img { margin-top: calc( $vertical-grid-base * 0.75 ); }
+
+        /* Headings look better with a little additional top margin */
+        h1,h2,h3,h4,h5,h6 {
+            &:not(:first-child) {
+                margin-top: calc( $vertical-grid-base * 1.5 );
+            }
+        }
+
+        /* Overrides inline margins */
+        iframe.twitter-tweet,.instagram-media[style] {
+            margin-top: calc( $vertical-grid-base * 0.75 ) !important;
+        }
+
+        p,li,dt,dl {
+            font-size: $font-size;
+            line-height: $vertical-grid-base;
+
+            img {
+                margin-bottom: calc( $vertical-grid-base * 0.75 );
+            }
+        }
+
+        li,dt+dd {
+            margin-top: calc( $vertical-grid-base * 0.25 );
+        }
+
+        blockquote {
+            p:last-child {
+                strong:only-child,small {
+                    font-size: 0.875em;
+                }
+            }
+        }
+
+        .caption-text {
+            margin-top: 0;
+            line-height: 15px;
+        }
+    }
+}

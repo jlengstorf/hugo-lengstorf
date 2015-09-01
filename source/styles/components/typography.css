@@ -1,0 +1,391 @@
+/*
+ * Typography Rules
+ *****************************************************************************/
+
+/*
+ * IMPORTANT: Must be required by a file that's already
+ * required variables.less!
+ */
+
+@import '../mixins/fonts';
+
+/* Sets font sizes and vertical rhythms */
+@mixin set-screen-size-rules 14px;
+
+body {
+  @mixin fontFamily 14px;
+  font-size: 14px;
+}
+
+.main-content {
+  @mixin headingSizes 11px, 20px;
+
+  p,li,dt,dl {
+    @mixin fontFamily 14px;
+  }
+
+  .main-content__excerpt p {
+    @mixin tinySizes 10.5px, 15px;
+  }
+
+  .main-content__categories,.main-content__tags {
+    @mixin tinySizes 7px, 10px;
+  }
+
+  .main-content__content>p:first-child,.lead {
+    font-size: 1.125em;
+    line-height: 1.25;
+  }
+
+  .caption-text {
+    font-size: calc( 14px * 0.75 );
+  }
+}
+
+.footer-about__copy,.footer-about__links {
+  @mixin tinySizes 7px, 10px;
+}
+
+@media (min-width: $screen-xs-min) {
+  @mixin set-screen-size-rules 16px;
+
+  body {
+    @mixin fontFamily 16px;
+    font-size: 16px;
+  }
+
+  .main-content {
+    @mixin headingSizes 16px, 20px;
+
+    p,li,dt,dl {
+      @mixin fontFamily 16px;
+    }
+
+    .main-content__excerpt p {
+      @mixin tinySizes 12px, 15px;
+    }
+
+    .main-content__categories,.main-content__tags {
+      @mixin tinySizes 8px, 10px;
+    }
+
+    .caption-text {
+      font-size: 12px;
+    }
+  }
+
+  .footer-about__copy,.footer-about__links {
+    @mixin tinySizes 8px, 10px;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  @mixin set-screen-size-rules 18px;
+
+  body {
+    @mixin fontFamily 18px;
+    font-size: 18px;
+  }
+
+  .main-content {
+    @mixin headingSizes 16px, 20px;
+
+    p,li,dt,dl {
+      @mixin fontFamily 18px;
+    }
+
+    .main-content__excerpt p {
+      @mixin tinySizes 13.5px, 15px;
+    }
+
+    .main-content__categories,.main-content__tags {
+      @mixin tinySizes 9px, 10px;
+    }
+
+    .caption-text {
+      font-size: 13.5px;
+    }
+  }
+
+  .footer-about__copy,.footer-about__links {
+    @mixin tinySizes 9px, 10px;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  @mixin set-screen-size-rules 20px;
+
+  body {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .main-content {
+    @mixin headingSizes 16px, 20px;
+
+    p,li,dt,dl {
+      @mixin fontFamily 20px;
+      line-height: 25px;
+    }
+
+    .main-content__excerpt p {
+      @mixin tinySizes 15px, 20px;
+    }
+
+    .main-content__categories,.main-content__tags {
+      @mixin tinySizes 10px, 10px;
+    }
+
+    .caption-text {
+      font-size: 15px;
+    }
+  }
+
+  .footer-about__copy,.footer-about__links {
+    @mixin tinySizes 10px, 10px;
+  }
+}
+
+body {
+  color: $font-color-base;
+  font-weight: 400;
+}
+
+.main-content,.post-footnotes {
+  >* {
+    margin: 0;
+
+    +* {
+      margin-top: 25px;
+    }
+  }
+
+  /* Sets defaults that aren’t size-sensitive */
+  h1,h2,h3,h4,h5,h6,p,ul,ol,li {
+    margin-bottom: 0;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,h2,h3,h4,h5,h6 {
+    font-family: $font-family-heading;
+    font-weight: $font-weight-heading;
+    color: $font-color-heading;
+
+    a {
+      &:link,&:visited,&:active,&:hover {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .main-content__headline {
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    color: $gray-dark;
+  }
+
+  h3 {
+    font-weight: 400;
+  }
+
+  p,li {
+    color: $font-color-base;
+    font-weight: 400;
+  }
+
+  /* footnotes! */
+  sup {
+    position: relative;
+    top: -0.75em;
+    font-size: 12px;
+    line-height: 0;
+    vertical-align: baseline;
+  }
+
+  a {
+    color: $brand-primary;
+    text-decoration: none;
+
+    strong {
+      color: inherit;
+    }
+
+    &:active,&:focus,&:hover {
+      color: darken($brand-primary, 10%);
+      outline: none;
+      text-decoration: underline;
+    }
+
+    /* offset adjustment for anchors hiding under the fixed header */
+    &[rel=footnote],.footnote-ref {
+      display: inline-block;
+      margin-top: -80px;
+      padding-top: 80px;
+      font-family: $font-family-base-small;
+    }
+  }
+
+  .main-content__content p:first-child,.lead {
+    color: $font-color-dark;
+  }
+
+  .caption-text {
+    color: $font-color-light;
+    line-height: 1.125;
+
+    p {
+      margin: 0;
+      padding: 0;
+
+      /* hacks, hacks, hacks — overrides a :first-child selector; */
+      color: inherit !important;
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    small {
+      display: block;
+      margin-top: 0;
+      text-transform: uppercase;
+      font-family: 'Gotham SSm A', 'Gotham SSm B';
+      font-size: 9px;
+      letter-spacing: 1px;
+      line-height: 15px;
+    }
+  }
+
+  strong,b {
+    color: $font-color-dark;
+    font-weight: $font-weight-bold;
+  }
+
+  hr {
+    clear: both;
+    margin-left: $image-outer-edge-margin;
+    margin-right: $image-outer-edge-margin;
+    border: none;
+    border-top: 1px solid $gray-light;
+  }
+
+  blockquote {
+    clear: both;
+    position: relative;
+    margin-left: $image-outer-edge-margin;
+    margin-right: $image-outer-edge-margin;
+    margin-bottom: 0;
+    padding: calc( $vertical-grid-base / 4 ) calc( $image-outer-edge-margin * -1 );
+    border-left: 1px solid $gray-light;
+
+    >* {
+      position: relative;
+      z-index: 10;
+    }
+
+    :first-child {
+      margin-top: 0;
+    }
+
+    p {
+      font-style: italic;
+
+      &:last-child {
+        small,strong:only-child {
+          display: block;
+          color: $font-color-light;
+          text-align: right;
+
+          &:before { content: '– '; }
+        }
+      }
+    }
+  }
+
+  /* Uses !important to override Twitter’s inline styles */
+  iframe.twitter-tweet {
+    margin: 1.5em auto !important;
+  }
+
+  .fb_iframe_widget {
+    display: block;
+    text-align: center;
+  }
+
+  /* WordPress-specific alignment & caption styles */
+  img {
+    @mixin img-responsive;
+    display: inline-block;
+    height: auto;
+    border: 1px solid $border-color;
+
+    &.aligncenter {
+        display: block;
+    }
+
+    &.alignleft,&.alignright {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+  }
+
+  .caption {
+    max-width: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    img {
+        width: 100%;
+    }
+  }
+
+  /* Galleries (have to hack because WP uses fucking IDs in its generated CSS) */
+  .gallery {
+    .gallery-item {
+      margin: 0 !important;
+      padding: 5px !important;
+
+      img {
+        margin: 0 !important;
+        border: 0 !important;
+      }
+    }
+  }
+
+  @media (min-width: $screen-md-min) {
+    img.aligncenter,.caption.aligncenter,.aligncenter,.gallery {
+
+      /* Overrides inline styles */
+      width: $image-width !important;
+      max-width: $image-width !important;
+      margin-left: $image-outer-edge-margin !important;
+      margin-right: $image-outer-edge-margin !important;
+    }
+
+    .alignleft,.alignright {
+      &,&.caption,img& {
+        max-width: 40%;
+        margin-bottom: $image-inner-edge-margin;
+      }
+    }
+
+    .alignright,img.alignright,.alignright.caption {
+      float: right;
+      margin-left: $image-inner-edge-margin;
+      margin-right: $image-outer-edge-margin;
+
+      .caption-text {
+        text-align: right;
+      }
+    }
+
+    .alignleft,img.alignleft,.alignleft.caption {
+      float: left;
+      margin-left: $image-outer-edge-margin;
+      margin-right: $image-inner-edge-margin;
+    }
+  }
+}

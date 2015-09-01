@@ -1,0 +1,65 @@
+/* colors */
+$body-bg: #fcf8f3;
+$gray-darker:  rgb(8,6,2);
+$gray-dark:    rgb(48, 44, 39);
+$gray:         rgb(104, 96, 85);
+$gray-light:   rgb(202, 197, 191);
+$gray-lighter: rgb(237, 235, 233);
+
+$brand-primary: #e26700;
+$brand-success: #5cb85c;
+$brand-info:    #547ff0;
+$brand-warning: #f0ad4e;
+$brand-danger:  #d9534f;
+
+$border-color: $gray;
+$border-radius-base: 4px;
+
+$pagination-color:                     $brand-primary;
+$pagination-bg:                        color( $body-bg whiteness(+ 10%) );
+$pagination-border:                    $gray-lighter;
+
+$pagination-hover-color:               color( $brand-primary blackness(+ 15%) );
+$pagination-hover-bg:                  $gray-lighter;
+$pagination-hover-border:              $gray-lighter;
+
+$pagination-active-color:              $body-bg;
+$pagination-active-bg:                 $brand-primary;
+$pagination-active-border:             $brand-primary;
+
+$pagination-disabled-color:            $gray-light;
+$pagination-disabled-bg:               color( $body-bg whiteness(+ 10%) );
+$pagination-disabled-border:           $gray-lighter;
+
+
+/* fonts */
+$font-family-base: 'Gotham A', 'Gotham B';
+$font-family-base-small: 'Gotham SSm A', 'Gotham SSm B';
+$font-family-base-large: $font-family-base;
+$font-family-heading: $font-family-base;
+$font-family-icon: "fontawesome";
+$font-color-base: $gray-dark;
+$font-color-heading: $gray-darker;
+$font-color-light: $gray;
+$font-color-dark: $gray-darker;
+$font-size-base: 14px;
+$font-size-small: 9px;
+$vertical-grid-base: 20px;
+$font-weight-base: 400;
+$font-weight-bold: 700;
+$font-weight-heading: 700;
+$font-weight-heavy: 900;
+
+
+/* images */
+$image-width: 110%;
+$image-outer-edge-margin: -5%;
+$image-inner-edge-margin: 25px;
+
+
+/* breakpoints */
+$screen-xs-min: 480px;
+$screen-sm-max: 767px;
+$screen-md-min: 992px;
+$screen-md-max: 991px;
+$screen-lg-min: 1200px;

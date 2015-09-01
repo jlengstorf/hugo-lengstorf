@@ -1,0 +1,54 @@
+
+    <header class="site-header closed">
+      <a href="{{ .Site.BaseURL }}"
+         class="site-header__brand"
+         title="Work from Anywhere — Jason Lengstorf"
+         rel="home">Jason Lengstorf</a>
+      <nav class="site-header__navigation" role="navigation">
+        <ul class="site-header__main-nav">
+            <li><a href="/about/" class="site-header__nav-item">Start Here</a></li>
+            <li><a href="/blog/" class="site-header__nav-item">Blog</a></li>
+            <li>
+                <a href="#" class="site-header__nav-item subnav-toggle"
+                   aria-haspopup="true">More</a>
+            </li>
+        </ul>
+        <ul class="site-header__secondary-nav"
+            aria-hidden="true" aria-label="submenu">
+          <li><a href="/category/remote-work/" class="site-header__secondary-nav-item">Earn a Living Anywhere</a></li>
+          <li><a href="/category/remote-productivity/" class="site-header__secondary-nav-item">Remote Productivity Tips</a></li>
+          <li><a href="/category/happiness/" class="site-header__secondary-nav-item">Happiness Practice</a></li>
+          <li><a href="/blog/" class="site-header__secondary-nav-item">Blog</a></li>
+          <li><a href="/about/" class="site-header__secondary-nav-item">About Jason</a></li>
+          <li><a href="/speaking/" class="site-header__secondary-nav-item">Speaking</a></li>
+          <li><a href="/contact/" class="site-header__secondary-nav-item">Contact</a></li>
+          <li class="social-media facebook">
+            <a href="https://facebook.com/jlengstorf"
+               class="site-header__secondary-nav-item">
+              <span class="sr-only">Facebook</span>
+            </a>
+          </li>
+          <li class="social-media twitter">
+            <a href="https://twitter.com/jlengstorf"
+               class="site-header__secondary-nav-item">
+              <span class="sr-only">Twitter</span>
+            </a>
+          </li>
+          <li class="social-media instagram">
+            <a href="https://instagram.com/jlengstorf"
+               class="site-header__secondary-nav-item">
+              <span class="sr-only">Instagram</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    {{ "<!--[if lte IE 9]>" | safeHTML }}
+    <p style="color: red;">
+      This browser is too old to support the styles for this site. To make sure the
+      content is still accessible, you&rsquo;re being served a version of the site without
+      a stylesheet so you can see and interact with everything. It ain&rsquo;t pretty, but
+      it&rsquo;ll work for you. :)
+    </p>
+    {{ "<![endif]-->" | safeHTML }}

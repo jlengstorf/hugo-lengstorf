@@ -1,0 +1,41 @@
+
+      <div class="related-posts">
+        <h2 class="related-posts__headline">What to Read Next</h2>
+      <!--
+        {{ $page_title := .Title }}
+        {{ $page_link := .Permalink }}
+        {{ $tags := .Params.tag }}
+        {{ $posts := where .Site.Pages "Section" "blog" }}
+        {{ $ga := "?utm_source=GASRC&utm_medium=GAMEDIUM&utm_campaign=related-posts" }}
+        {{ range $index, $page := $posts }}
+          {{ $is_related := intersect $tags $page.Params.tag | len | lt 0 }}
+          {{ if and $is_related (ne $page_link $page.Permalink) }}
+            {{ if lt ($.Scratch.Get "related_post_count") 2 }}
+              {{ $related_image := index $page.Params.images 0 }}
+      -->
+        <article class="blog-preview--related">
+          <h3 class="main-content__headline--related"
+              data-image="{{ $related_image }}">
+              <a href="{{ $page.Permalink }}{{ replace (replace $ga "GASRC" (urlize $page_title)) "GAMEDIUM" "headline" }}">{{ $page.Title }}</a>
+          </h3>
+          <div class="main-content__meta">
+              <a href="{{ $page.Permalink }}{{ replace (replace $ga "GASRC" (urlize $page_title)) "GAMEDIUM" "image" }}">
+                  <img src="{{ $related_image }}"
+                       alt="{{ $page.Title}}"
+                       class="alignleft featured-image">
+              </a>
+              <div class="main-content__excerpt">
+                <p>{{ $page.Description }}</p>
+              </div>
+              {{ partial "blog/categories.html" $page }}
+              {{ partial "blog/tags.html" $page }}
+              <a href="{{ $page.Permalink }}{{ replace (replace $ga "GASRC" (urlize $page_title)) "GAMEDIUM" "read-more" }}" class="blog-preview__read-more">Read this post</a>
+          </div>
+        </article>
+      <!--
+              {{ $.Scratch.Add "related_post_count" 1 }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      -->
+      </div>

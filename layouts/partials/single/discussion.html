@@ -1,0 +1,8 @@
+
+        {{ with .Params.discussion_link }}<div class="main-content__discussion">
+          <a href="{{ . }}"
+             title="Comments on {{ $.Title }}"
+             class="js__ga-track-outbound">
+            Discuss This Post
+          </a>
+        </div>{{ end }}

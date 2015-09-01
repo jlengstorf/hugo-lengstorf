@@ -1,0 +1,14 @@
+        {{ if isset .Params "category" }}
+        <ul class="main-content__categories">
+          {{ range .Params.category }}<li>
+            {{ $category := index $.Site.Data.category (urlize .) }}
+            <a href="/category/{{ . | urlize }}">
+              {{ if isset $category "name" }}
+                {{ $category.name }}
+              {{ else }}
+                {{.}}
+              {{ end }}
+            </a>
+          </li>{{ end }}
+        </ul>
+        {{ end }}

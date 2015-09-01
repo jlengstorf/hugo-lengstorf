@@ -1,0 +1,17 @@
+
+    <footer class="footer">
+      <ul class="footer__navigation">
+        <li class="footer__site-nav">
+          <a href="{{ "/about/" | relURL }}">About</a>
+          <a href="{{ "/blog/" | relURL }}">Blog</a>
+          <a href="{{ "/speaking/" | relURL }}">Speaking</a>
+          <a href="{{ "/contact/" | relURL }}">Contact</a>
+          <a href="{{ "/disclaimer/" | relURL }}">Disclaimer</a>
+        </li>
+        <li class="footer__copyright">
+          All content copyright &copy;
+          <a href="{{ "/" | absURL }}"
+             rel="home">{{ .Site.Title }}</a>
+        </li>
+      </ul>
+    </footer>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    {{ partial "header.html" . }}
+    {{ $category := index $.Site.Data.category (urlize .Title) }}
+    <div class="main-content post-archive">
+      <h1 class="main-content__archive-title">
+        {{ if isset .Data "Singular" }}
+          {{ if isset $category "name" }}
+            {{ $category.name }}
+          {{ else }}
+            {{ .Data.Singular | title }}: {{ .Title | title }}
+          {{ end }}
+        {{ else }}
+          Recent Blog Posts
+        {{ end }}
+      </h1>
+      {{ with $category.summary }}<p class="main-content__archive-description">
+        {{ . | safeHTML }}
+      </p>{{ end }}
+      {{ if isset .Data "Singular" }}{{ else }}
+      <script>
+        (function() {
+          var cx = '007515341874450556556:wqrlmcefmg4';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+              '//cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);
+        })();
+      </script>
+      <gcse:search></gcse:search>
+      {{ end }}
+      {{ $paginator := .Paginate (where .Data.Pages "Type" "blog") }}
+      {{ range $paginator.Pages }}
+        {{ partial "blog/preview.html" . }}
+      {{ end }}
+
+      <div class="text-center">
+        {{ template "_internal/pagination.html" . }}
+      </div>
+    </div>
+    {{ partial "footer.html" . }}
+    {{ partial "scripts.html" . }}
+  </body>
+
+</html>

@@ -1,0 +1,15 @@
+
+        <div class="main-content__sharing">
+            <a href="http://www.facebook.com/sharer.php?u={{ .Permalink }}"
+               class="main-content__sharing-link facebook">
+                <span class="sr-only">Share on Facebook</span>
+            </a>
+            <a href="http://twitter.com/share?text={{ .Title }}&amp;url={{ .Permalink }}&amp;via=jlengstorf&amp;hashtags={{ delimit (apply .Params.tags "chomp" ".") ", " }}"
+               class="main-content__sharing-link twitter">
+                <span class="sr-only">Share on Twitter</span>
+            </a>
+            <a href="https://plus.google.com/share?url={{ .Permalink }}"
+               class="main-content__sharing-link googleplus">
+                <span class="sr-only">Share on Google Plus</span>
+            </a>
+        </div>
