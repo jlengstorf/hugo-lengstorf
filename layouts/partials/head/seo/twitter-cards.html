@@ -1,11 +1,12 @@
-{{ with .Params.images }}
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image:src" content="{{ if in (index . 0) "-600x300" }}{{ index . 1 }}{{ else }}{{ index . 0 }}{{ end }}">
+{{ with .Params.images }}
+    <meta name="twitter:image:src" content="{{ if in (index . 0) "-600x300" }}{{ index . 1 | absURL }}{{ else }}{{ index . 0 | absURL }}{{ end }}">
 {{ else }}
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image:src" content="{{ "/images/jason-lengstorf-smiling.jpg" | absURL }}">
 {{ end }}
     <meta name="twitter:title" content="{{ if .Params.seo_title }}{{ .Params.seo_title }}{{ else }}{{ .Title }}{{ end }}">
-    <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}">
+    <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}Jason Lengstorf is an author, a speaker, and a solver of hard problems. He is currently experimenting with permanent travel and remote work.{{ end }}{{ end }}">
     {{ with .Site.Params.social.twitter }}<meta name="twitter:site" content="@{{ . }}">{{ end }}
     {{ with .Site.Params.social.twitter_domain }}<meta name="twitter:domain" content="{{ . }}">{{ end }}
 {{ if and (isset .Site.Params "authors") (isset .Params "author") }}

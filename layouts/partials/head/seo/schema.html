@@ -1,8 +1,13 @@
     <!-- Schema.org markup -->
     <meta itemprop="name" content="{{ if .Params.seo_title }}{{ .Params.seo_title }}{{ else }}{{ .Title }}{{ end }}">
-    <meta itemprop="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}">
+    <meta itemprop="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}Jason Lengstorf is an author, a speaker, and a solver of hard problems. He is currently experimenting with permanent travel and remote work.{{ end }}{{ end }}">
 {{ with .Params.images }}{{ range first 6 . }}
-    {{ if in . "-600x300" }}{{ else }}<meta itemprop="image" content="{{ . }}">{{ end }}{{ end }}
+    {{ if in . "-600x300" }}{{ else }}<meta itemprop="image" content="{{ . | absURL }}">{{ end }}{{ end }}
+{{ else }}
+    <meta itemprop="image" content="{{ "/images/jason-lengstorf-smiling.jpg" | absURL }}">
 {{ end }}
     <meta itemprop="keywords" content="{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s," $term }}{{ end }}{{ end }}">
     {{if .IsPage}}<meta itemprop="wordCount" content="{{ .WordCount }}">{{ end }}
+{{ if eq (add .Permalink "") (add .Site.BaseURL "") }}
+    <script type='application/ld+json'>{"@context":"http://schema.org","@type":"Person","url":"http://lengstorf.com/","sameAs":["https://www.facebook.com/jlengstorf","https://instagram.com/jlengstorf","https://plus.google.com/+Lengstorf","https://www.youtube.com/lengstorf","https://twitter.com/jlengstorf"],"name":"Jason Lengstorf"}</script>
+{{ end }}
