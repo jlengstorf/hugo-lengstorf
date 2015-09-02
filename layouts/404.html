@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    {{ partial "header.html" . }}
+    <article class="main-content">
+      <h1 class="main-content__headline--page">
+        Looks Like You've Found a Dead Link
+      </h1>
+      <div class="main-content__content">
+        <p>
+          The link you&rsquo;ve requested has changed, moved, or no longer
+          exists. If you&rsquo;re feeling helpful, please
+          <a href="mailto:{{ .Site.Params.site_email }}?subject=Broken link on {{ .Site.BaseURL }}&body=Broken Link: {{ .Permalink }}%0D%0A%0D%0AWhere was the link that brought you here? (optional):%0D%0A">send a heads up</a>
+          so we can fix the problem.
+        </p>
+        <p>
+          <a href="{{ .Site.BaseURL }}">Back to the home page.</a>
+        </p>
+      </div>
+    </article>
+    {{ partial "footer.html" . }}
+    {{ partial "scripts.html" . }}
+  </body>
+
+</html>
