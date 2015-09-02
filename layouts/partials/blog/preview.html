@@ -1,12 +1,18 @@
-        {{ $mainImage := index .Params.images 0 }}
+        <!--
+          {{ if in (index .Params.images 0) "-600x300" }}
+            {{ $.Scratch.Set "mainImage" (index .Params.images 1) }}
+          {{ else }}
+            {{ $.Scratch.Set "mainImage" (index .Params.images 0) }}
+          {{ end }}
+        -->
         <article class="blog-preview">
             <h2 class="main-content__headline"
-                data-image="{{ with $mainImage }}{{.}}{{ end }}">
+                data-image="{{ $.Scratch.Get "mainImage" }}">
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
             </h2>
             <div class="main-content__meta">
                 <a href="{{ .Permalink }}">
-                    <img src="{{ with $mainImage }}{{.}}{{ end }}"
+                    <img src="{{ index .Params.images 0 }}"
                          alt="{{ .Title }}"
                          class="alignleft featured-image">
                 </a>

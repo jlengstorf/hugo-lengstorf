@@ -3,14 +3,20 @@
   {{ partial "head.html" . }}
   <body>
     {{ partial "header.html" . }}
-    {{ $mainImage := index .Params.images 0 }}
+    <!--
+      {{ if in (index .Params.images 0) "-600x300" }}
+        {{ $.Scratch.Add "mainImage" (index .Params.images 1) }}
+      {{ else }}
+        {{ $.Scratch.Add "mainImage" (index .Params.images 0) }}
+      {{ end }}
+    -->
     <article class="main-content">
       <h1 class="main-content__headline--single"
-              data-image="{{ $mainImage | absURL }}">
+              data-image="{{ $.Scratch.Get "mainImage" | absURL }}">
         {{ .Title }}
       </h1>
       <div class="main-content__meta">
-        <img src="{{ $mainImage | absURL }}"
+        <img src="{{ index .Params.images 0 | absURL }}"
              alt="{{ .Title }}"
              class="alignleft featured-image">
         <div class="main-content__excerpt">
