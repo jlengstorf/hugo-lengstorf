@@ -15,8 +15,9 @@
    ***************************************************************************/
 
   // DAYS ON THE ROAD COUNTER
-  const timeSince = Date.now() - Date('2014-12-30T12:00:00');
-  const daysSince = Math.ceil(timeSince / 86400000); // 1000ms x 60s x 60m x 24h
+  const todayIs = Date.now();
+  const iLeftOn = new Date('2014-12-30T12:00:00');
+  const daysSince = Math.ceil((todayIs - iLeftOn) / 86400000); // 1000ms x 60s x 60m x 24h
   const $daysAbroad = document.querySelector('.days-abroad');
   if ($daysAbroad) {
     $daysAbroad.textContent = daysSince + ' days';
