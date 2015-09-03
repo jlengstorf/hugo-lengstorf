@@ -4,10 +4,33 @@
 {{ with .Params.images }}{{ range first 6 . }}
     {{ if in . "-600x300" }}{{ else }}<meta itemprop="image" content="{{ . | absURL }}">{{ end }}{{ end }}
 {{ else }}
-    <meta itemprop="image" content="{{ "/images/jason-lengstorf-smiling.jpg" | absURL }}">
+    <meta itemprop="image" content="{{ "/images/jason-lengstorf.jpg" | absURL }}">
 {{ end }}
-    <meta itemprop="keywords" content="{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s," $term }}{{ end }}{{ end }}">
     {{if .IsPage}}<meta itemprop="wordCount" content="{{ .WordCount }}">{{ end }}
 {{ if eq (add .Permalink "") (add .Site.BaseURL "") }}
-    <script type='application/ld+json'>{"@context":"http://schema.org","@type":"Person","url":"http://lengstorf.com/","sameAs":["https://www.facebook.com/jlengstorf","https://instagram.com/jlengstorf","https://plus.google.com/+Lengstorf","https://www.youtube.com/lengstorf","https://twitter.com/jlengstorf"],"name":"Jason Lengstorf"}</script>
+  {{ with $.Site.Params.schema }}
+    <script type='application/ld+json'>
+    {
+      "@context":"http://schema.org",
+      "@type": {{ .type }},
+      "url": {{ $.Site.BaseURL }},
+      "sameAs": {{ .sameAs }},
+      "name": {{ .name }}
+    }
+    </script>
+  {{ end }}
+{{ end }}
+{{ if eq .Section "blog" }}
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "NewsArticle",
+      "headline": "{{ .Params.seo_title }}",
+      "alternativeHeadline": "{{ .Title }}",
+      "image": {{ apply .Params.images "absURL" "." }},
+      "datePublished": "{{ .Date }}",
+      "description": {{ safeHTML .Description }},
+      "articleBody": {{ safeHTML (chomp .Content) }}
+    }
+    </script>
 {{ end }}
