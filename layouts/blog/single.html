@@ -5,9 +5,9 @@
     {{ partial "header.html" . }}
     <!--
       {{ if in (index .Params.images 0) "-600x300" }}
-        {{ $.Scratch.Add "mainImage" (index .Params.images 1) }}
+        {{ $.Scratch.Set "mainImage" (index .Params.images 1) }}
       {{ else }}
-        {{ $.Scratch.Add "mainImage" (index .Params.images 0) }}
+        {{ $.Scratch.Set "mainImage" (index .Params.images 0) }}
       {{ end }}
     -->
     <article class="main-content">
