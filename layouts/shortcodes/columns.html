@@ -1,0 +1,9 @@
+{{ if .Inner }}
+<div class="list-columns">
+
+  {{ .Get 0 }}
+
+  {{ with .Inner }}{{ . }}{{ end }}
+
+</div>
+{{ end }}
