@@ -1904,9 +1904,7 @@ a.blog-preview__read-more {
 
   /* Offset override for anchor links hiding under the fixed header */
   li {
-    margin-top: -80px;
     margin-bottom: 10px;
-    padding-top: 80px;
   }
 
   >li {

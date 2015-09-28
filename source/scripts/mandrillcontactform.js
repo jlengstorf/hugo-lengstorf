@@ -2,6 +2,8 @@
 
   'use strict';
 
+  // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
+
   // CONTACT FORM
   const $contact = document.getElementById('contact');
   if ($contact) {

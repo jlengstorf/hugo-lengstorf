@@ -136,71 +136,114 @@
   // LOCAL SCROLLING (WITHOUT JQUERY)
   // Adds a function to handle scrolling the page
   function scrollTo(element, targetPos, duration) {
-    const currentPos = element.scrollTop;
-    const posChange = targetPos - currentPos;
-    const increment = 20;
+    return new Promise((resolve, reject) => {
+      const currentPos = element.scrollTop;
+      const posChange = targetPos - currentPos;
+      const increment = 20;
 
-    console.log('Beginning scrollTo...');
-    console.log('currentPos', currentPos);
-    console.log('posChange', posChange);
+      // Quadratic easing (in/out) from http://gizma.com/easing/#quad3 (modified)
+      const easeInOut = (elapsed, start, change, length) => {
+        elapsed /= length / 2;
 
-    // Quadratic easing (in/out) from http://gizma.com/easing/#quad3 (modified)
-    const easeInOut = (currentTime, start, change, duration) => {
-      console.log('easeInOut()');
+        if (elapsed < 1) {
+          return change / 2 * elapsed * elapsed + start;
+        }
 
-      currentTime /= duration / 2;
+        elapsed--;
 
-      if (currentTime < 1) {
-        return change / 2 * currentTime * currentTime + start;
-      }
+        return -change / 2 * (elapsed * (elapsed - 2) - 1) + start;
+      };
 
-      currentTime--;
+      // Sets up a loop that executes for the length of time set in duration
+      const animateScroll = (elapsedTime) => {
+        elapsedTime += increment;
 
-      return -currentTime / 2 * (currentTime * (currentTime - 2) - 1) + start;
-    };
+        const newPos = easeInOut(elapsedTime, currentPos, posChange, duration);
 
-    // Sets up a loop that executes for the length of time set in duration
-    const animateScroll = (elapsedTime) => {
-      elapsedTime += increment;
+        // Actually sets the document's scroll setting
+        element.scrollTop = newPos;
 
-      console.log('Animating...', elapsedTime);
+        if (elapsedTime < duration) {
+          setTimeout(() => { animateScroll(elapsedTime); }, increment);
+        } else {
+          resolve();
+        }
+      };
 
-      const newPos = easeInOut(elapsedTime, currentPos, posChange, duration);
-
-      // Actually sets the document's scroll setting
-      element.scrollTop = newPos;
-      console.log('newPos', newPos);
-
-      if (elapsedTime < duration) {
-        setTimeout(() => { animateScroll(elapsedTime); }, increment);
-      }
-    };
-
-    // Starts the animation
-    animateScroll(0);
+      // Starts the animation
+      animateScroll(0);
+    });
   }
 
-  // Checks for a local link
-  document.addEventListener('click', event => {
-    const target = event.target;
+  function findLocalLinksAndScroll(newURL) {
+    return new Promise((resolve, reject) => {
 
-    // Makes sure a link was clicked
-    if (target.tagName.toLowerCase() === 'a' && target.href !== 'undefined') {
-      const href = target.href;
+      // Only runs if there's no current scrolling happening
+      if (isScrolling) {
+        return;
+      }
+
+      // Prevents overlapping calls
+      isScrolling = true;
+
+      const targetID = newURL.split('#')[1] || false;
       const loc = document.location;
       const currentURL = `${loc.protocol}//${loc.host}${loc.pathname}`;
 
       // Removes the current URL and checks for a protocol to spot anchor links
-      if (!href.replace(currentURL, '').match(/^http/)) {
-        event.preventDefault();
+      if (!newURL.replace(currentURL, '').match(/^http/) && !!targetID) {
+        const scrollTarget = document.getElementById(targetID);
+        const menuAdjustment = size === 'mobile' ? 60 : 70;
+        let anchorOffset = scrollTarget.offsetTop - menuAdjustment;
 
-        const menuAdjustment = size === 'mobile' ? 50 : 60;
-        const anchorOffset = target.offsetTop - menuAdjustment;
+        if (scrollTarget.offsetParent.classList.contains('post-footnotes')) {
+
+          // When we moved the footnotes, the offsetTop amount broke.
+          // We use the parent to fix that, plus remove the 30px of padding.
+          anchorOffset += scrollTarget.offsetParent.offsetTop + 30;
+        }
+
+        // Works around inconsistencies between Chrome & Firefox
+        const isDocBody = document.body.scrollTop;
+        const doc = isDocBody ? document.body : document.documentElement;
 
         // Animates the scroll to avoid jarring page jumps
-        scrollTo(document.body, anchorOffset, 2000);
+        scrollTo(doc, anchorOffset, 750)
+          .then(() => {
+            isScrolling = false;
+            resolve();
+          });
       }
+    });
+  }
+
+  // Gives us a state to track
+  let isScrolling = false;
+
+  // Handles clicking links inside the page
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+
+    // Makes sure a link was clicked
+    if (target.tagName.toLowerCase() === 'a' && target.href !== 'undefined') {
+      event.preventDefault();
+
+      const newURL = target.href;
+
+      findLocalLinksAndScroll(newURL)
+        .then(() => {
+          history.pushState({ newURL: newURL }, '', newURL);
+        });
     }
+  });
+
+  // Handles the back button
+  window.addEventListener('hashchange', (event) => {
+    event.preventDefault();
+
+    const newURL = event.newURL;
+
+    findLocalLinksAndScroll(newURL);
   });
 
   // FOOTNOTE SHUFFLING

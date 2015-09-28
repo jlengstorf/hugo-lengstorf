@@ -237,8 +237,6 @@ body {
     /* offset adjustment for anchors hiding under the fixed header */
     &[rel=footnote],.footnote-ref {
       display: inline-block;
-      margin-top: -80px;
-      padding-top: 80px;
       font-family: $font-family-base-small;
     }
   }
