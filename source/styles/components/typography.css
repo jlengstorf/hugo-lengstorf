@@ -191,6 +191,21 @@ body {
     font-weight: 400;
   }
 
+  @media (min-width: 768px) {
+    h4 a {
+      &:hover,&:active,&:focus {
+        &:after {
+          content: 'Jump to This Section';
+          padding-left: 10px;
+          font-size: 12px;
+          font-weight: $font-weight-base;
+          line-height: 0.1;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
   p,li {
     color: $font-color-base;
     font-weight: 400;
@@ -222,8 +237,6 @@ body {
     /* offset adjustment for anchors hiding under the fixed header */
     &[rel=footnote],.footnote-ref {
       display: inline-block;
-      margin-top: -80px;
-      padding-top: 80px;
       font-family: $font-family-base-small;
     }
   }
