@@ -16,7 +16,7 @@
 
         p,li,dt,dl {
             font-size: $font-size;
-            line-height: $vertical-grid-base;
+            line-height: 1.375;
 
             img {
                 margin-bottom: calc( $vertical-grid-base * 0.75 );
