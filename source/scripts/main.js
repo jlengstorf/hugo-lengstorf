@@ -190,8 +190,12 @@
       const loc = document.location;
       const currentURL = `${loc.protocol}//${loc.host}${loc.pathname}`;
 
+      console.log(targetID);
+
       // Removes the current URL and checks for a protocol to spot anchor links
       if (!newURL.replace(currentURL, '').match(/^http/) && !!targetID) {
+        event.preventDefault();
+
         const scrollTarget = document.getElementById(targetID);
         const menuAdjustment = size === 'mobile' ? 60 : 70;
         let anchorOffset = scrollTarget.offsetTop - menuAdjustment;
@@ -226,8 +230,6 @@
 
     // Makes sure a link was clicked
     if (target.tagName.toLowerCase() === 'a' && target.href !== 'undefined') {
-      event.preventDefault();
-
       const newURL = target.href;
 
       findLocalLinksAndScroll(newURL)
