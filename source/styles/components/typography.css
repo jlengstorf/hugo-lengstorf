@@ -214,10 +214,14 @@ body {
   /* footnotes! */
   sup {
     position: relative;
-    top: -0.75em;
+    top: -0.5em;
     font-size: 12px;
     line-height: 0;
     vertical-align: baseline;
+
+    @media (min-width: $screen-md-min) {
+      top: -0.75em;
+    }
   }
 
   a {
@@ -263,7 +267,7 @@ body {
       display: block;
       margin-top: 0;
       text-transform: uppercase;
-      font-family: 'Gotham SSm A', 'Gotham SSm B';
+      font-family: $font-family-base-small;
       font-size: 9px;
       letter-spacing: 1px;
       line-height: 15px;
