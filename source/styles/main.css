@@ -10,6 +10,7 @@
 @import 'mixins/forms';
 
 @import 'components/typography';
+@import 'components/navigation';
 @import 'components/pagination';
 @import 'components/gse';
 @import 'components/list-columns';
@@ -77,7 +78,6 @@ body {
   );
   box-shadow: 0 0 0.5vw color( $gray-darker alpha(25%) );
   z-index: 1000;
-  overflow: hidden;
 
   &.open {
     height: 100vh;
@@ -139,7 +139,7 @@ body {
   }
 }
 
-.site-header__navigation {
+/*.site-header__navigation {
   right: 0;
   font-size: inherit;
   line-height: inherit;
@@ -309,7 +309,7 @@ body {
     outline: none;
     text-decoration: none;
   }
-}
+}*/
 
 /*
  * HOME PAGE
