@@ -18,13 +18,13 @@
 
     // Adds a class to on-screen elements
     function onVisibilityChange(el, callback) {
-      return function () {
+      return function() {
         if (isElementInViewport(el)) {
           el.classList.add('js__in-viewport');
         } else {
           el.classList.remove('js__in-viewport');
         }
-      }
+      };
     }
 
     // Helper for checking if the element is within the viewport
