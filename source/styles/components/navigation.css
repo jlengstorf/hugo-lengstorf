@@ -4,10 +4,17 @@
   left: 0;
   right: 0;
   height: 40px;
-  background: blue;
   box-shadow: 0 0 0.5vw color( $gray-darker alpha(25%) );
 
+  @media (min-width: 768px) {
+    position: static;
+    height: 100%;
+    width: 70%;
+    text-align: right;
+  }
+
   &__main-nav {
+    position: relative;
     display: flex;
     align-items: space-between;
     list-style: none;
@@ -15,6 +22,11 @@
     margin: 0;
     padding: 0;
     border-top: 1px solid $gray-light;
+    z-index: 10;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
 
     li {
       flex: 1 20%;
@@ -24,6 +36,15 @@
       &:last-child {
         border-right: none;
       }
+
+      @media (min-width: 768px) {
+        display: inline-block;
+        border: none;
+      }
+    }
+
+    @media (min-width: 768px) {
+      border: none;
     }
   }
 
@@ -40,6 +61,15 @@
     text-decoration: none;
     text-transform: uppercase;
 
+    @media (min-width: 768px) {
+      background: transparent;
+      height: auto;
+      padding: 3px 5px;
+      color: $gray-lighter;
+      font-size: 12px;
+      line-height: 2;
+    }
+
     &::before {
       content: attr(data-icon);
       display: block;
@@ -49,6 +79,10 @@
       font-family: $font-family-icon;
       font-size: 20px;
       line-height: 1.25;
+
+      @media (min-width: 768px) {
+        display: none;
+      }
     }
 
     &:hover,&:active,&:focus {
@@ -56,10 +90,36 @@
       color: $body-bg;
       cursor: pointer;
       outline: none;
+
+      @media (min-width: 768px) {
+        background: color( $gray-lighter alpha(25%) );
+        border-radius: 4px;
+        color: $body-bg;
+        font-weight: inherit;
+        outline: none;
+        text-decoration: none;
+      }
     }
   }
+}
 
-  &__secondary-nav {
-    display: none;
+@media (min-width: 768px) {
+  .subnav-toggle {
+    position: relative;
+    padding-right: 20px;
+
+    &::after {
+      position: absolute;
+      content: '\f0c9';
+      right: 5px;
+      font-family: $font-family-icon;
+      font-size: 12px;
+    }
+
+    .open &::after {
+      content: '\f106';
+      padding-right: 3px;
+      padding-left: 3px;
+    }
   }
 }
