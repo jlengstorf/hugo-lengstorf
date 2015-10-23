@@ -1,0 +1,521 @@
+#cost-of-living {
+}
+.main-content {
+  .cost-of-living {
+    width: 100%;
+
+    &__sub-headline {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    /* Form */
+    &__input-list {
+      list-style: none;
+      padding: 0;
+
+      @media (min-width: $screen-md-min) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+    }
+
+    &__input-item {
+      margin: 0;
+
+      @media (min-width: $screen-md-min) {
+        flex: 1 48%;
+        max-width: 48%;
+      }
+    }
+
+    &__input-group {
+      position: relative;
+      display: block;
+      margin-top: 10px;
+      font-family: $font-family-base-small;
+      font-size: 10px;
+      line-height: 1.5;
+
+      input {
+        @mixin input;
+        margin-top: 0;
+        padding-left: 3vw;
+
+        @media (min-width: 650px) {
+          padding-left: 2vw;
+          padding-right: 2vw;
+        }
+
+        @media (min-width: 768px) {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+      }
+    }
+
+    &__tooltip {
+      position: relative;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 0 0 3px;
+      padding-right: 0.75px;
+      border: 1px solid color( $gray-light blackness(+ 15%) );
+      border-radius: 50%;
+      color: color( $gray-light blackness(+ 15%) );
+      font-family: $font-family-base-small;
+      font-size: 7px;
+      line-height: 10px;
+      text-align: center;
+
+      &::before, &::after {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $gray-lighter;
+        border: 1px solid $gray-light;
+        opacity: 0;
+        pointer-events: none;
+        transition: 250ms opacity ease-in-out;
+      }
+
+      &::before {
+        content: attr(data-tooltip);
+        bottom: 17px;
+        width: 230px;
+        margin: 0;
+        padding: 4px;
+        border-radius: 4px;
+        box-shadow: 0 0 2px color( $gray-darker alpha(12.5%) );
+        color: $gray;
+        font-size: 9px;
+        font-weight: normal;
+        z-index: 10;
+      }
+
+      &::after {
+        content: '';
+        bottom: 14px;
+        left: 25%;
+        display: block;
+        width: 6px;
+        height: 6px;
+        border-left: none;
+        border-top: none;
+        transform: rotate(45deg);
+        z-index: 11;
+      }
+    }
+
+    &__input-group {
+      span:hover,span:hover + span {
+        &::before,&::after {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__radio-label {
+      display: block;
+      margin-top: 10px;
+      padding: 4px;
+      border: 1px solid $gray-light;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      text-align: center;
+      transition: 250ms background linear;
+
+      &:hover,&:focus,&:active {
+        background-color: $gray-lighter;
+      }
+
+      &::before {
+        content: '\f10c';
+        margin-right: 4px;
+        font-family: $font-family-icon;
+      }
+
+      &--selected {
+        background-color: color( $brand-primary alpha(35%) );
+        border-color: color( $brand-primary alpha(20%) );
+        font-weight: bold;
+
+        &::before {
+          content: '\f192';
+        }
+
+        &:hover,&:focus,&:active {
+          background-color: color( $brand-primary alpha(35%) );
+        }
+      }
+
+      input {
+        visibility: hidden;
+        position: absolute;
+      }
+    }
+
+    @media (min-width: 450px) {
+      &__input-item--radio {
+        flex: 1 100%;
+        max-width: 100%;
+
+        .cost-of-living__input-group {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      &__radio-label {
+        flex: 1 45%;
+        max-width: 48%;
+        margin-top: 0;
+      }
+    }
+
+    &__continue-link {
+      @mixin submit;
+      clear: both;
+      display: block;
+      width: 100%;
+      margin: 40px auto 90vh;
+      text-align: center;
+
+      &:hover,&:focus,&:active {
+        background: color( $brand-primary whiteness(+ 10%) );
+        border-color: $brand-primary;
+        color: white;
+        outline: none;
+        text-decoration: none;
+        text-shadow: 1px 1px 1px color( $gray-darker alpha(15%) );
+      }
+    }
+
+    /* Summary */
+    &__summary {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    &__summary-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &__summary-item {
+      position: relative;
+      margin: 0;
+      color: $gray-darker;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.325;
+      text-align: center;
+      text-transform: uppercase;
+
+      &:first-child {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+
+        &::after {
+          content: 'vs';
+          position: absolute;
+          top: 100%;
+          right: 50%;
+          transform: translate(50%, -50%);
+          display: block;
+          width: 20px;
+          height: 20px;
+          background: $gray-darker;
+          border-radius: 50%;
+          color: $body-bg;
+          font-size: 8px;
+          font-weight: bold;
+          line-height: 20px;
+          text-align: center;
+        }
+      }
+
+      &:last-child {
+        margin-top: 20px;
+        font-size: 14px;
+
+        strong {
+          margin-bottom: 2px;
+          font-size: 45px;
+          font-weight: bold;
+          line-height: 1.25;
+        }
+      }
+
+      em,strong {
+        display: block;
+        margin-top: 0;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: normal;
+        text-transform: none;
+      }
+    }
+
+    @media (min-width: 525px) {
+      &__summary-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      &__summary-item {
+        flex: 1 50%;
+        max-width: 50%;
+        padding: 0 3%;
+
+        &:first-child {
+          margin-bottom: 0;
+          padding-bottom: 0;
+
+          &::after {
+            top: 50%;
+            right: 0;
+            transform: translate(50%, -45%);
+          }
+        }
+
+        &:last-child {
+          flex: 2 100%;
+          max-width: 100%;
+          font-size: 14px;
+
+          strong {
+            font-size: 55px;
+            line-height: 1;
+          }
+        }
+
+        em {
+          line-height: 1;
+        }
+      }
+    }
+
+    @media (min-width: 768px) {
+      &__summary {
+        margin-bottom: 60px;
+      }
+
+      &__summary-item {
+        font-size: 16px;
+
+        em,strong {
+          font-size: 22px;
+        }
+
+        &:last-child {
+          font-size: 20px;
+
+          strong {
+            margin-bottom: 4px;
+            font-size: 75px;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 1024px) {
+      &__summary-item {
+        em,strong {
+          font-size: 24px;
+        }
+      }
+    }
+
+    /* Table */
+    &__travel-costs-wrapper {
+
+      /* Makes this responsive-ish */
+      overflow-x: scroll;
+    }
+
+    &__travel-costs {
+      max-width: 99%;
+      margin-left: auto;
+      margin-right: auto;
+      border-collapse: collapse;
+      font-family: $font-family-base-small;
+      font-size: 8px;
+      line-height: 1.1;
+
+      th {
+        width: 7%;
+      }
+
+      tbody {
+        th {
+          padding: 3px 3px 3px 0;
+          text-align: left;
+          white-space: nowrap;
+        }
+
+        td {
+          padding: 3px;
+          border: 1px solid $gray-light;
+          color: $gray;
+
+          strong {
+            display: block;
+            color: $gray;
+          }
+
+          .travel-cost__icon {
+            display: block;
+            margin-top: 4px;
+
+            &::before {
+              content: '';
+              /*display: inline-block;*/
+              /*width: 10px;*/
+              /*height: 10px;*/
+              margin-right: 2px;
+              font-family: $font-family-icon;
+            }
+
+            &--rent::before {
+              content: '\f015';
+            }
+
+            &--flight::before {
+              content: '\f072';
+            }
+          }
+        }
+      }
+    }
+
+    /* Chart */
+    &__graph {
+      position: relative;
+      height: 0;
+      padding-bottom: 54.65%;
+
+      .ct-chart {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+
+    &__legend {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-align: center;
+    }
+
+    &__legend-item {
+      display: inline-block;
+      margin: 0 10px 0 0;
+      color: $gray;
+      font-size: 9px;
+      line-height: 1;
+
+      @media (min-width: $screen-md-min) {
+        font-size: 10px;
+      }
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 15px;
+        height: 8px;
+        margin-right: 4px;
+        border-top: 1px solid;
+        vertical-align: bottom;
+      }
+
+      &--lease::before {
+        background-color: color( $gray-darker alpha(10%) );
+        border-color: color( $gray-darker alpha(10%) );
+      }
+
+      &--travel::before {
+        background-color: color( $brand-primary alpha(35%) );
+        border-color: color( $brand-primary alpha(20%) );
+      }
+    }
+
+    /* Chartist-specific styles */
+    .ct-chart {
+      width: 100%;
+      height: 100%;
+
+      .ct-label {
+        display: block;
+        width: 100%;
+        height: 100%;
+        fill: $gray-light;
+        color: $gray-light;
+        font-family: $font-family-base-small;
+        font-size: 8px;
+        line-height: 1;
+        text-align: left;
+
+        &.ct-vertical {
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-end;
+          text-anchor: end;
+          text-align: right;
+        }
+      }
+    }
+
+    .ct-grid.ct-horizontal {
+      stroke: color( $gray-darker alpha(7.5%) );
+      stroke-width: 1px;
+      stroke-dasharray: 2px;
+    }
+
+    .ct-point {
+      stroke-width: 10px;
+      stroke-linecap: round;
+    }
+
+    .ct-line {
+      fill: none;
+      stroke-width: 1px;
+    }
+
+    .ct-area {
+      fill-opacity: 0.1;
+      stroke: none;
+    }
+
+    .series-travel {
+      fill: $brand-primary;
+
+      .ct-line {
+        stroke: color( $brand-primary alpha(20%) );
+      }
+
+      .ct-area {
+        fill-opacity: 0.35;
+      }
+    }
+
+    .series-lease {
+      fill: $gray-darker;
+
+      .ct-line {
+        stroke: color( $gray-darker alpha(10%) );
+      }
+    }
+  }
+}

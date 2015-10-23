@@ -25,33 +25,6 @@
     $daysAbroad.textContent = daysSince + ' days';
   }
 
-  // SUBNAV TOGGLE
-  // Toggles open/close state of the subnav panel
-  const $subnavToggle = document.querySelector('.subnav-toggle');
-  $subnavToggle.addEventListener('click', (event) => {
-
-    event.preventDefault();
-
-    const $header = document.querySelector('.site-header');
-    let navText;
-
-    if ($header.classList.contains('closed')) {
-      $header.classList.remove('closed');
-      $header.classList.add('open');
-
-      navText = 'Less';
-    } else {
-      $header.classList.remove('open');
-
-      navText = 'More';
-
-      setTimeout(() => { $header.classList.add('closed'); }, 500);
-    }
-
-    $subnavToggle.textContent = navText;
-
-  });
-
   // SHARING POPUPS
   if (size === 'desktop') {
     const $sharing = document.querySelectorAll('.main-content__sharing');
@@ -175,7 +148,11 @@
     });
   }
 
-  function findLocalLinksAndScroll(newURL) {
+  function getElementToScroll() {
+    return document.body.scrollTop ? document.body : document.documentElement;
+  }
+
+  function findLocalLinksAndScroll(newURL, event) {
     return new Promise((resolve, reject) => {
 
       // Only runs if there's no current scrolling happening
@@ -189,8 +166,6 @@
       const targetID = newURL.split('#')[1] || false;
       const loc = document.location;
       const currentURL = `${loc.protocol}//${loc.host}${loc.pathname}`;
-
-      console.log(targetID);
 
       // Removes the current URL and checks for a protocol to spot anchor links
       if (!newURL.replace(currentURL, '').match(/^http/) && !!targetID) {
@@ -208,8 +183,7 @@
         }
 
         // Works around inconsistencies between Chrome & Firefox
-        const isDocBody = document.body.scrollTop;
-        const doc = isDocBody ? document.body : document.documentElement;
+        const doc = getElementToScroll();
 
         // Animates the scroll to avoid jarring page jumps
         scrollTo(doc, anchorOffset, 750)
@@ -232,7 +206,14 @@
     if (target.tagName.toLowerCase() === 'a' && target.href !== 'undefined') {
       const newURL = target.href;
 
-      findLocalLinksAndScroll(newURL)
+      if (document.body && document.body.scrollTop === 0) {
+
+        // Addresses a weird Chrome bug where scrollTop doesn't work when
+        // scrolled all the way to the top (document.body.scrollTop === 0).
+        document.body.scrollTop = 1;
+      }
+
+      findLocalLinksAndScroll(newURL, event)
         .then(() => {
           history.pushState({ newURL: newURL }, '', newURL);
         });

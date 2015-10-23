@@ -5,7 +5,7 @@
     {{ partial "header.html" . }}
 
     <article class="main-content">
-      <h1 class="main-content__headline--single"
+      <h1 class="main-content__headline--page"
           data-image="{{ with .Params.images }}{{ index . 0 | absURL }}{{ end }}">
         {{ .Title }}
       </h1>
