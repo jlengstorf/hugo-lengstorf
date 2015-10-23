@@ -148,7 +148,11 @@
     });
   }
 
-  function findLocalLinksAndScroll(newURL) {
+  function getElementToScroll() {
+    return document.body.scrollTop ? document.body : document.documentElement;
+  }
+
+  function findLocalLinksAndScroll(newURL, event) {
     return new Promise((resolve, reject) => {
 
       // Only runs if there's no current scrolling happening
@@ -179,8 +183,7 @@
         }
 
         // Works around inconsistencies between Chrome & Firefox
-        const isDocBody = document.body.scrollTop;
-        const doc = isDocBody ? document.body : document.documentElement;
+        const doc = getElementToScroll();
 
         // Animates the scroll to avoid jarring page jumps
         scrollTo(doc, anchorOffset, 750)
@@ -203,7 +206,14 @@
     if (target.tagName.toLowerCase() === 'a' && target.href !== 'undefined') {
       const newURL = target.href;
 
-      findLocalLinksAndScroll(newURL)
+      if (document.body && document.body.scrollTop === 0) {
+
+        // Addresses a weird Chrome bug where scrollTop doesn't work when
+        // scrolled all the way to the top (document.body.scrollTop === 0).
+        document.body.scrollTop = 1;
+      }
+
+      findLocalLinksAndScroll(newURL, event)
         .then(() => {
           history.pushState({ newURL: newURL }, '', newURL);
         });
