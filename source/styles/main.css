@@ -1738,8 +1738,12 @@ a.blog-preview__read-more {
 
 .post-footnotes__list {
   padding-left: 20px;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 1.375;
+
+  @media(min-width: $screen-md-min) {
+    font-size: 16px;
+  }
 
   /* Offset override for anchor links hiding under the fixed header */
   li {
