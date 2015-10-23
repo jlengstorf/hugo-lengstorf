@@ -1,0 +1,23 @@
+{
+  "name": "lengstorf-hugo",
+  "description": "Port of lengstorf.com to Hugo.",
+  "main": "gulpfile.js",
+  "authors": [
+    "Jason Lengstorf <jason@lengstorf.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jlengstorf/hugo-lengstorf",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "cost-of-living": "https://github.com/jlengstorf/cost-of-living.git"
+  }
+}
