@@ -23,7 +23,6 @@
       $header.classList.remove('open');
       $slideOutNav.setAttribute('aria-hidden', '');
 
-
       navText = 'More';
 
       setTimeout(() => {
