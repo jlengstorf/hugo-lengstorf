@@ -16,6 +16,7 @@
 @import 'components/gse';
 @import 'components/list-columns';
 @import 'components/five-stages';
+@import 'components/cost-of-living';
 
 
 * {
@@ -1456,6 +1457,18 @@ a.main-content__sharing-link {
 
     &:before {
       content: '\f0d5';
+    }
+  }
+
+  &.pinterest {
+    background-color: #c92228;
+
+    &:hover,&:focus {
+      background-color: color( #c92228 blackness(+ 10%) );
+    }
+
+    &:before {
+      content: '\f231';
     }
   }
 }
