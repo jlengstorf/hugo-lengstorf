@@ -14,6 +14,12 @@
    * CUSTOM THEME JS
    ***************************************************************************/
 
+  // CHECKS FOR TOUCH DEVICES
+  // Some things (like hoverable tooltips) don't work on touch devices
+  if (!('ontouchstart' in window) || !('msmaxtouchpoints' in window.navigator)) {
+    document.body.classList.add('js__not-touch');
+  }
+
   // DAYS ON THE ROAD COUNTER
   const todayIs = Date.now();
   const iLeftOn = new Date('2014-12-30T12:00:00');
