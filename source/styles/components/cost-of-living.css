@@ -4,9 +4,13 @@
   .cost-of-living {
     width: 100%;
 
-    &__sub-headline {
+    &__heading {
       margin-top: 0;
       padding-top: 0;
+    }
+
+    &__subheading {
+      text-align: center;
     }
 
     /* Form */
@@ -36,12 +40,14 @@
       margin-top: 10px;
       font-family: $font-family-base-small;
       font-size: 10px;
+      font-weight: bold;
       line-height: 1.5;
 
       input {
         @mixin input;
         margin-top: 0;
         padding-left: 3vw;
+        font-weight: normal;
 
         @media (min-width: 650px) {
           padding-left: 2vw;
@@ -56,56 +62,65 @@
     }
 
     &__tooltip {
-      position: relative;
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      margin: 0 0 0 3px;
-      padding-right: 0.75px;
-      border: 1px solid color( $gray-light blackness(+ 15%) );
-      border-radius: 50%;
-      color: color( $gray-light blackness(+ 15%) );
-      font-family: $font-family-base-small;
-      font-size: 7px;
-      line-height: 10px;
-      text-align: center;
-
-      &::before, &::after {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: $gray-lighter;
-        border: 1px solid $gray-light;
-        opacity: 0;
-        pointer-events: none;
-        transition: 250ms opacity ease-in-out;
-      }
+      display: block;
+      margin: 0 0 2px;
+      font-weight: normal;
 
       &::before {
         content: attr(data-tooltip);
-        bottom: 17px;
-        width: 230px;
-        margin: 0;
-        padding: 4px;
-        border-radius: 4px;
-        box-shadow: 0 0 2px color( $gray-darker alpha(12.5%) );
-        color: $gray;
-        font-size: 9px;
-        font-weight: normal;
-        z-index: 10;
       }
 
-      &::after {
-        content: '';
-        bottom: 14px;
-        left: 25%;
-        display: block;
-        width: 6px;
-        height: 6px;
-        border-left: none;
-        border-top: none;
-        transform: rotate(45deg);
-        z-index: 11;
+      .js__not-touch & {
+        position: relative;
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin: 0 0 0 3px;
+        padding-right: 0.75px;
+        border: 1px solid $gray;
+        border-radius: 50%;
+        color: $gray;
+        font-family: $font-family-base-small;
+        font-size: 7px;
+        line-height: 10px;
+        text-align: center;
+
+        &::before, &::after {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: $gray-lighter;
+          border: 1px solid $gray-light;
+          opacity: 0;
+          pointer-events: none;
+          transition: 250ms opacity ease-in-out;
+        }
+
+        &::before {
+          bottom: 17px;
+          width: 230px;
+          margin: 0;
+          padding: 4px;
+          border-radius: 4px;
+          box-shadow: 0 0 2px color( $gray-darker alpha(12.5%) );
+          color: $gray;
+          font-size: 9px;
+          font-weight: normal;
+          z-index: 10;
+        }
+
+        &::after {
+          content: '';
+          bottom: 14px;
+          left: 25%;
+          display: block;
+          width: 6px;
+          height: 6px;
+          border-left: none;
+          border-top: none;
+          transform: rotate(45deg);
+          z-index: 11;
+        }
       }
     }
 
@@ -181,7 +196,7 @@
       clear: both;
       display: block;
       width: 100%;
-      margin: 40px auto 90vh;
+      margin: 30px auto 90vh;
       text-align: center;
 
       &:hover,&:focus,&:active {
@@ -191,6 +206,36 @@
         outline: none;
         text-decoration: none;
         text-shadow: 1px 1px 1px color( $gray-darker alpha(15%) );
+      }
+    }
+
+    /* Itinerary */
+    &__itinerary-list {
+      list-style: none;
+      max-width: 310px;
+      margin: 10px auto 0;
+      padding: 0;
+    }
+
+    &__list-item {
+      padding-left: 15px;
+      font-size: 12px;
+
+      &::before {
+        display: inline-block;
+        width: 15px;
+        margin-left: -15px;
+        color: $gray;
+        font-family: $font-family-icon;
+        font-size: 10px;
+      }
+
+      &--stop::before {
+        content: '\f015';
+      }
+
+      &--flight::before {
+        content: '\f072';
       }
     }
 
@@ -328,68 +373,6 @@
       &__summary-item {
         em,strong {
           font-size: 24px;
-        }
-      }
-    }
-
-    /* Table */
-    &__travel-costs-wrapper {
-
-      /* Makes this responsive-ish */
-      overflow-x: scroll;
-    }
-
-    &__travel-costs {
-      max-width: 99%;
-      margin-left: auto;
-      margin-right: auto;
-      border-collapse: collapse;
-      font-family: $font-family-base-small;
-      font-size: 8px;
-      line-height: 1.1;
-
-      th {
-        width: 7%;
-      }
-
-      tbody {
-        th {
-          padding: 3px 3px 3px 0;
-          text-align: left;
-          white-space: nowrap;
-        }
-
-        td {
-          padding: 3px;
-          border: 1px solid $gray-light;
-          color: $gray;
-
-          strong {
-            display: block;
-            color: $gray;
-          }
-
-          .travel-cost__icon {
-            display: block;
-            margin-top: 4px;
-
-            &::before {
-              content: '';
-              /*display: inline-block;*/
-              /*width: 10px;*/
-              /*height: 10px;*/
-              margin-right: 2px;
-              font-family: $font-family-icon;
-            }
-
-            &--rent::before {
-              content: '\f015';
-            }
-
-            &--flight::before {
-              content: '\f072';
-            }
-          }
         }
       }
     }
