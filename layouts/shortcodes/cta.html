@@ -5,7 +5,7 @@ Adds a call to action into the content.
 {{ $cta := .Get 0 }}
 
 -->
-{{ if eq $cta "travel" }}<h2>What&rsquo;s Next?</h2>
+{{ if eq $cta "travel" }}<h2>{{ if isset .Params 1 }}{{ .Get 1 }}{{ else }}What&rsquo;s Next?{{ end }}</h2>
 <p>
   If you&rsquo;re like me, the idea of traveling permanently while making a living probably seems like a dream — but you don&rsquo;t think you can pull it off.
 </p>
