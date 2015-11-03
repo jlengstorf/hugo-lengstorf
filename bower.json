@@ -18,6 +18,6 @@
     "tests"
   ],
   "dependencies": {
-    "cost-of-living": "https://github.com/jlengstorf/cost-of-living.git"
+    "cost-of-living": "jlengstorf/cost-of-living"
   }
 }
