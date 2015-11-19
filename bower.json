@@ -18,6 +18,7 @@
     "tests"
   ],
   "dependencies": {
-    "cost-of-living": "jlengstorf/cost-of-living"
+    "cost-of-living": "jlengstorf/cost-of-living",
+    "drop-in-chart": "jlengstorf/drop-in-chart"
   }
 }

@@ -1,0 +1,14 @@
+{{ if .Get 0 }}
+  <script src="/vendor/drop-in-chart/dist/drop-in-chart.min.js"></script>
+  <div id="{{ .Get 0 }}"></div>
+  {{ $chart := index $.Page.Site.Data.chart (urlize (.Get 0)) }}
+  <script>
+    ReactDOM.render(
+      React.createElement(
+        DropInChart,
+        {{ $chart }}
+      ),
+      document.getElementById('{{ .Get 0 }}')
+    );
+  </script>
+{{ end }}
