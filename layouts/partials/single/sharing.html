@@ -8,8 +8,8 @@
                class="main-content__sharing-link twitter">
                 <span class="sr-only">Share on Twitter</span>
             </a>
-            <a href="https://plus.google.com/share?url={{ .Permalink }}"
-               class="main-content__sharing-link googleplus">
-                <span class="sr-only">Share on Google Plus</span>
+            <a href="http://pinterest.com/pin/create/button/?url={{ .Permalink }}&media={{ $.Scratch.Get "mainImage" | absURL }}&description={{ .Title }}"
+               class="main-content__sharing-link pinterest">
+                <span class="sr-only">Share on Pinterest</span>
             </a>
         </div>
