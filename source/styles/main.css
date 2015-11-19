@@ -16,6 +16,7 @@
 @import 'components/gse';
 @import 'components/list-columns';
 @import 'components/five-stages';
+@import 'components/drop-in-chart';
 @import 'components/cost-of-living';
 
 
@@ -479,6 +480,14 @@ body {
 .menu-search__submit {
   width: 40%;
   margin-top: 0;
+}
+
+.main-content aside {
+  @mixin opt-in;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 80%;
+  text-align: center;
 }
 
 .opt-in {
@@ -1734,6 +1743,11 @@ a.blog-preview__read-more {
 .post-footnotes {
   padding-top: 30px;
   padding-bottom: 0;
+  border-top: 1px solid $gray-lighter;
+
+  .footer-about + & {
+    border-top: 0;
+  }
 }
 
 .post-footnotes__list {
