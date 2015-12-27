@@ -270,10 +270,35 @@
     });
   };
 
+  const gaTrackCampaignClick = function({ url, source, campaign }) {
+    ga('send', {
+      hitType: 'event',
+      eventCategory: campaign,
+      eventAction: 'click',
+      eventLabel: source,
+      hitCallback: () => {
+        document.location = url;
+      },
+    });
+  };
+
   document.addEventListener('click', event => {
     if (event.target.classList.contains('js__ga-track-outbound')) {
       event.preventDefault();
       gaTrackOutboundClick(event.target.href);
+    }
+
+    if (event.target.classList.contains('js__ga-track-campaign')) {
+      event.preventDefault();
+
+      // TODO sort by campaign
+      const data = {
+        url: event.target.href,
+        campaign: event.target.dataset.campaign || 'default-campaign',
+        source: event.target.dataset.source || document.location.pathname,
+      };
+
+      gaTrackCampaignClick(data);
     }
   });
 
