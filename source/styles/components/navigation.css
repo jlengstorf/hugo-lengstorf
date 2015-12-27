@@ -4,7 +4,9 @@
   left: 0;
   right: 0;
   height: 40px;
+  backface-visibility: hidden;
   box-shadow: 0 0 0.5vw color( $gray-darker alpha(25%) );
+  overflow-scrolling: touch;
 
   @media (min-width: 768px) {
     position: static;
