@@ -25,6 +25,12 @@
 
         <input type="hidden" name="u" value="34042625c99172141e2b35836">
         <input type="hidden" name="id" value="7e395d5c57">
+        {{ with .Get "group" }}
+          <input type="hidden"
+                 {{ if eq . "focus" }}name="group[22697][1]"{{ end }}
+                 {{ if eq . "remote-work" }}name="group[22697][2]"{{ end }}
+                 value="1" />
+        {{ end }}
       </form>
     </div>
     <p class="opt-in__privacy-notice">
