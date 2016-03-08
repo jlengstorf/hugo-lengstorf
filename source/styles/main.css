@@ -185,7 +185,7 @@ body {
 .hometown-hero__headline {
   margin: 0;
   color: $body-bg;
-  font-family: $font-family-base;
+  font-family: $font-family-heading;
   font-size: 4.5vw;
   font-weight: $font-weight-heavy;
   line-height: 1.111em;
@@ -923,6 +923,7 @@ p.opt-in__privacy-notice {
   }
 
   .cta__headline {
+    font-family: $font-family-heading;
     font-size: 4.5vw;
 
     strong {
@@ -986,6 +987,7 @@ p.opt-in__privacy-notice {
   }
 
   .cta__subhead {
+    font-family: $font-family-heading;
     font-size: 5.25vw;
   }
 
@@ -1278,8 +1280,17 @@ p.opt-in__privacy-notice {
   }
 }
 
-.main-content__headline--related {
+.main-content .main-content__headline--related {
   margin-top: 30px;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 400;
+  text-transform: none;
+
+  @media (min-width: $screen-md-min) {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 .main-content__meta {
