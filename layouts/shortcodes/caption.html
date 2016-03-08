@@ -7,6 +7,7 @@
   - attr <string> entity to be credited for the image
   - attrlink <string> Must be a valid URL
   - alt <string> alt text for the image
+  - imglink <string> Must be a valid URL
   - src <string> Path to the image
 
   Usage:
@@ -18,8 +19,10 @@
 -->
 
 <figure class="caption {{ with .Get "align" }}{{.}}{{ end }}">
+  {{ with .Get "imglink" }}<a href="{{ . }}">{{ end }}
   <img src="{{ .Get "src" }}"
        alt="{{ with .Get "alt" }}{{.}}{{ end }}">
+  {{ with .Get "imglink" }}</a>{{ end }}
   {{ if or (.Get "attr") (gt $innerLength 0) }}<figcaption class="caption-text">
     {{ with .Inner }}{{ . }}{{ end }}
     {{ if isset .Params "attr" }}<small>Credit: {{ with .Get "attrlink" }}<a href="{{.}}">{{ end }}{{ .Get "attr" }}{{ if .Get "attrlink" }}</a>{{ end }}</small>{{ end }}
