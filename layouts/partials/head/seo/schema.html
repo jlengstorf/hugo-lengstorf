@@ -21,16 +21,36 @@
   {{ end }}
 {{ end }}
 {{ if eq .Section "blog" }}
+  {{ $author := index .Site.Params.authors .Params.author }}
     <script type="application/ld+json">
     {
       "@context": "http://schema.org",
       "@type": "NewsArticle",
-      "headline": "{{ .Params.seo_title }}",
-      "alternativeHeadline": "{{ .Title }}",
-      "image": {{ apply .Params.images "absURL" "." }},
-      "datePublished": "{{ .Date }}",
+      "mainEntityOfPage": {{ .Permalink }},
+      "headline": {{ .Params.seo_title }},
+      "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" }},
+      "dateModified": {{ .Date.Format "2006-01-02T15:04:05Z07:00" }},
       "description": {{ safeHTML .Description }},
-      "articleBody": {{ safeHTML (chomp .Content) }}
+      "author": {
+        "@type": "Person",
+        "name": {{ $author.name }}
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Jason Lengstorf",
+        "logo": {
+          "@type": "ImageObject",
+          "url": {{ "/images/jason-lengstorf-logo.png" | absURL }},
+          "width": 478,
+          "height": 60
+        }
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": {{ with .Params.images }}{{ range first 6 . }}{{ if in . "-600x300" }}{{ else }}{{ . | absURL }}{{ end }}{{ end }}{{ else }}{{ "/images/jason-lengstorf.jpg" | absURL }}{{ end }},
+        "width": 1600,
+        "height": 800
+      }
     }
     </script>
 {{ end }}
