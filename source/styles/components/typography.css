@@ -188,7 +188,15 @@ body {
   }
 
   h3 {
-    font-weight: 400;
+    font-weight: 900;
+    color: $font-color-heading;
+    font-size: 18px;
+    line-height: 20px;
+    text-transform: uppercase;
+
+    @media (min-width: $screen-md-min) {
+      font-size: 20px;
+    }
   }
 
   @media (min-width: 768px) {
@@ -404,5 +412,19 @@ body {
       margin-left: $image-outer-edge-margin;
       margin-right: $image-inner-edge-margin;
     }
+  }
+}
+
+.main-content hr {
+  margin-left: 0;
+  margin-right: 0;
+  border: 0;
+
+  &::after {
+    content: '* * *';
+    display: block;
+    padding-top: 0.5em;
+    color: $gray-light;
+    text-align: center;
   }
 }

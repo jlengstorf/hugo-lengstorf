@@ -33,10 +33,10 @@ $pagination-disabled-border:           $gray-lighter;
 
 
 /* fonts */
-$font-family-base: 'Gotham A', 'Gotham B';
-$font-family-base-small: 'Gotham SSm A', 'Gotham SSm B';
+$font-family-base: 'Gotham A', 'Gotham B', sans-serif;
+$font-family-base-small: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
 $font-family-base-large: $font-family-base;
-$font-family-heading: $font-family-base;
+$font-family-heading: 'Gotham A', 'Gotham B', sans-serif;
 $font-family-icon: "fontawesome";
 $font-color-base: $gray-dark;
 $font-color-heading: $gray-darker;
