@@ -7,13 +7,13 @@ Adds a call to action into the content.
 -->
 <h2>{{ if isset .Params 1 }}{{ .Get 1 }}{{ else }}What To Do Next{{ end }}</h2>
 {{ if eq $cta "travel" }}<p>
-  If you&rsquo;re like me, the idea of traveling permanently while making a living probably seems like a dream — but you don&rsquo;t think you can pull it off.
+  If you’re like me, the idea of traveling permanently while making a living probably seems like a dream — but you don’t think you can pull it off.
 </p>
 <p>
-  I felt that way right up until I actually boarded a flight to leave the United States. And now I can&rsquo;t believe I didn&rsquo;t start living this life sooner.
+  I felt that way right up until I actually boarded a flight to leave the United States. And now I can’t believe I didn’t start living this life sooner.
 </p>
 <p>
-  <strong>I want to help you avoid my mistake: you can start living the life of your dreams right now. And I&rsquo;ve put together a <a href="https://lengstorf.com/remote-work-course/">free step-by-step guide</a> to show you how.</strong>
+  <strong>I want to help you avoid my mistake: you can start living the life of your dreams right now. And I’ve put together a <a href="https://lengstorf.com/remote-work-course/">free step-by-step guide</a> to show you how.</strong>
 </p>
 <p>
   <a href="{{ .Page.Site.BaseURL }}remote-work-course/"
@@ -22,19 +22,19 @@ Adds a call to action into the content.
      data-source="{{ .Page.Slug }}">Click here to get the free guide.</a>
 </p>{{ end }}
 {{ if eq $cta "focus" }}<p>
-  Being an adult is hard.
+  Adulting is <em>hard</em>.
 </p>
 <p>
-  There's just so much to do: we're supposed to build careers, build relationships, build futures, build happiness — it gets pretty fucking overwhelming. It's easy to feel lost. To feel like we're on autopilot, punching a clock, doing things we don't really care about. What happened to that excitement we used to feel? That sense of purpose?
+  We’re supposed to build careers, build relationships, build futures, build happiness&hellip; It’s all pretty fucking overwhelming. It’s easy to feel stuck — like we’re on autopilot, punching a clock, and buried in tasks we don’t really care about.
 </p>
 <p>
-  I want to help you find meaning in your work again. I want to help you take back your time, eliminate the things that drain you, and focus on the things that matter most, whether that's your family, your career, your happiness — or all three.
+  Wouldn’t it be nice to get some balance back? To have extra time <em>every day</em> to dedicate to the things that are most important to you?
 </p>
 <p>
-  To help you, I've put together a free mini-course to help you take back control, so you can start living the life you <em>want</em>.
+  I want to help: <strong>I’ve compiled <em>5 Habits of the Unfuckwithably Productive</em>, and <a href="{{ "/productivity-habits/" | absURL }}">I want to give it to you for free</a>.</strong> These are time-tested habits that power my successful career; this is <em>how I spend less than 40 hours a week on the computer — while making a living and traveling the world.</em>
 </p>
 <p>
-  <a href="{{ .Page.Site.BaseURL }}focus-course/"
+  <a href="{{ "/productivity-habits/" | absURL }}"
      class="js__ga-track-campaign"
      data-campaign="focus-course"
      data-source="{{ .Page.Slug }}">Click here to get the free guide.</a>
