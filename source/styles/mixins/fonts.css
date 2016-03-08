@@ -4,6 +4,8 @@
 
         /* Headings look better with a little additional top margin */
         h1,h2,h3,h4,h5,h6 {
+            font-family: @font-family-base;
+
             &:not(:first-child) {
                 margin-top: calc( $vertical-grid-base * 1.5 );
             }
