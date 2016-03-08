@@ -4,8 +4,3 @@ source_repo: "https://github.com/jlengstorf/lengstorf.com"
 description: "Port of my custom WordPress theme to Hugo"
 tags: [blog, personal]
 features: [manual]
-
-author:
-    name: Jason Lengstorf
-    email: jason@lengstorf.com
-    url: "http://lengstorf.com"
