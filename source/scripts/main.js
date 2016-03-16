@@ -181,6 +181,9 @@
         const menuAdjustment = size === 'mobile' ? 60 : 70;
         let anchorOffset = scrollTarget.offsetTop - menuAdjustment;
 
+        // Adds the highlight class if appropriate.
+        highlightCurrentFootnote(scrollTarget);
+
         if (scrollTarget.offsetParent.classList.contains('post-footnotes')) {
 
           // When we moved the footnotes, the offsetTop amount broke.
@@ -199,6 +202,25 @@
           });
       }
     });
+  }
+
+  function highlightCurrentFootnote(target) {
+    const parentContainer = target.offsetParent;
+    const isFootnote = parentContainer.classList.contains('post-footnotes');
+    const fnList = document.querySelector('.post-footnotes__list');
+    let fnote = fnList ? fnList.firstElementChild : false;
+
+    // Remove the highlight class from all footnotes first.
+    while (fnote && fnote.tagName === 'LI') {
+      fnote.classList.remove('add-highlight');
+      fnote = fnote.nextElementSibling;
+      console.log(fnote);
+    }
+
+    // If the current target is a footnote, add the highlight class.
+    if (isFootnote && target.tagName === 'LI') {
+      target.classList.add('add-highlight');
+    }
   }
 
   // Gives us a state to track
