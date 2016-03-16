@@ -7,7 +7,7 @@ module.exports = function( mixin, size ) {
   // Sets a default font family, plus font weight
   var fontFamilyDecl = postcss.decl({
     prop: 'font-family',
-    value: '"Gotham A", "Gotham B", sans-serif'
+    value: '"Gotham A", "Gotham B", gotham, sans-serif'
   });
 
   var fontWeightDecl = postcss.decl({
@@ -17,7 +17,7 @@ module.exports = function( mixin, size ) {
 
   // If the font is smaller than 18px, use the screen-smart version
   if (parseInt(size) < 18) {
-    fontFamilyDecl.value = '"Gotham Ssm A", "Gotham Ssm B", sans-serif';
+    fontFamilyDecl.value = '"Gotham Ssm A", "Gotham Ssm B", gotham, sans-serif';
   }
 
   mixin.replaceWith(fontFamilyDecl, fontWeightDecl);
