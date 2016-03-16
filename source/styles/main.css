@@ -1776,7 +1776,18 @@ a.blog-preview__read-more {
   }
 
   >li {
-    margin-bottom: 20px;
+    list-style-position: inside;
+    padding: 10px 20px 10px 35px;
+    background-color: color( $brand-primary alpha(0%) );
+    border: 1px solid color( $brand-primary alpha(0%) );
+    border-radius: 5px;
+    text-indent: -1.125em;
+    transition: 200ms all linear;
+
+    &.add-highlight {
+      background-color: color( $brand-primary alpha(10%) );
+      border: 1px solid color( $brand-primary alpha(10%) );
+    }
   }
 
   p {
