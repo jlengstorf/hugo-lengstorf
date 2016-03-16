@@ -47,7 +47,7 @@
       },
       "image": {
         "@type": "ImageObject",
-        "url": {{ with .Params.images }}{{ range first 6 . }}{{ if in . "-600x300" }}{{ else }}{{ . | absURL }}{{ end }}{{ end }}{{ else }}{{ "/images/jason-lengstorf.jpg" | absURL }}{{ end }},
+        "url": {{ with .Params.images }}{{ if in (index . 0) "-600x300" }}{{ index . 1 | absURL }}{{ else }}{{ index . 0 | absURL }}{{ end }}{{ else }}{{ "/images/jason-lengstorf.jpg" | absURL }}{{ end }},
         "width": 1600,
         "height": 800
       }
