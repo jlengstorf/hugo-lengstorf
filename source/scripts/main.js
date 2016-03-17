@@ -112,6 +112,21 @@
     }
   }
 
+  /*
+   * Move the nav to the bottom on mobile to avoid janky touch scrolling caused
+   * by changing viewport heights (URL bar appearing/disappearing).
+   */
+  if (size !== 'desktop' ) {
+    const $header = document.querySelector('.site-header');
+    const $mainNav = document.querySelector('.site-header__navigation');
+
+    // Pull it out of the header (which fucks with the position on resize)...
+    $header.removeChild($mainNav);
+
+    // ...and drop it on the body, which should resize properly.
+    document.body.appendChild($mainNav);
+  }
+
   // LOCAL SCROLLING (WITHOUT JQUERY)
   // Adds a function to handle scrolling the page
   function scrollTo(element, targetPos, duration) {
